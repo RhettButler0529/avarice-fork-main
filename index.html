@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+
+    <title>Duorice</title>
+    <meta name="description" content="">
+    <title>Defi at Its Purest</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:image" content="path/to/image.jpg">
+    <link rel="icon" href="panel/dist/imgs/duorice_logo_3.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+    <meta name="theme-color" content="#000">
+
+    <link rel="stylesheet" href="css/main.min.css">
+
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: {families: ['Catamaran:300,400,600,700', 'Raleway:100,700', 'Roboto:700,900']}
+        };
+        (function () {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                '://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+
+    <script type="text/javascript">
+        var _html = document.documentElement;
+        _html.className = _html.className.replace("no-js", "js");
+    </script>
+    <style>.preloader {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background-color: #fff;
+        z-index: 9999;
+    }</style>
+</head>
+<body style="background-color: #1f2122ed;">
+<div class="preloader"></div>
+<div class="wrapper">
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="/panel/dist/imgs/duorice_logo_3.png" class="logo__img" style="background-image: none">
+            <div class="logo__title">Duorice</div>
+        </a>
+        <ul class="menu">
+            <li class="menu__item">
+                <a href="#about" class="menu__link">About</a>
+            </li>
+            <li class="menu__item">
+                <a href="#statistic" class="menu__link">Statistic</a>
+            </li>
+<!--            <li class="menu__item">-->
+<!--                <a href="#idea" class="menu__link">The Idea</a>-->
+<!--            </li>-->
+            <li class="menu__item">
+                <a href="#features" class="menu__link">Features</a>
+            </li>
+            <li class="menu__item">
+                <a href="#faq" class="menu__link">FAQ</a>
+            </li>
+<!--            <li class="menu__item">-->
+<!--                <a href="./litepaper.pdf" class="menu__link">litepaper</a>-->
+<!--            </li>-->
+        </ul>
+        <div class="header__right">
+
+            <div class="sign-in-wrap">
+                <a href="./panel/stake.html" class="btn-sign-in">Duorice Panel</a>
+            </div>
+        </div>
+        <div class="btn-menu">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+        </div>
+    </header>
+    <div class="fixed-menu">
+        <div class="fixed-menu__header">
+            <a href="#" class="logo">
+                <div class="logo__img"></div>
+                <div class="logo__title">Duorice</div>
+            </a>
+            <div class="btn-close">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px"
+                     y="0px" viewBox="0 0 47.971 47.971" style="enable-background:new 0 0 47.971 47.971;"
+                     xml:space="preserve" width="512px" height="512px">
+<path d="M28.228,23.986L47.092,5.122c1.172-1.171,1.172-3.071,0-4.242c-1.172-1.172-3.07-1.172-4.242,0L23.986,19.744L5.121,0.88   c-1.172-1.172-3.07-1.172-4.242,0c-1.172,1.171-1.172,3.071,0,4.242l18.865,18.864L0.879,42.85c-1.172,1.171-1.172,3.071,0,4.242   C1.465,47.677,2.233,47.97,3,47.97s1.535-0.293,2.121-0.879l18.865-18.864L42.85,47.091c0.586,0.586,1.354,0.879,2.121,0.879   s1.535-0.293,2.121-0.879c1.172-1.171,1.172-3.071,0-4.242L28.228,23.986z"
+      fill="#006DF0"/></svg>
+            </div>
+        </div>
+        <div class="fixed-menu__content">
+            <ul class="mob-menu">
+                <li class="mob-menu__item">
+                    <a href="#about" class="mob-menu__link">About</a>
+                </li>
+                <li class="mob-menu__item">
+                    <a href="#statistic" class="mob-menu__link">Statistic</a>
+                </li>
+                <li class="mob-menu__item">
+                    <a href="#idea" class="mob-menu__link">The Idea</a>
+                </li>
+                <li class="mob-menu__item">
+                    <a href="#features" class="mob-menu__link">Features</a>
+                </li>
+                <li class="mob-menu__item">
+                    <a href="#faq" class="mob-menu__link">FAQ</a>
+                </li>
+                <li class="mob-menu__item">
+                    <a href="./litepaper.pdf" class="mob-menu__link">litepaper</a>
+                </li>
+            </ul>
+            <select class="select">
+                <option value="ru">ru</option>
+                <option value="ua">ua</option>
+                <option value="en">en</option>
+            </select>
+
+        </div>
+    </div>
+    <section class="promo">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 promo__content" data-aos="fade-right">
+                    <h1>Duorice <span>Defi at Its Purest</span></h1>
+                    <p>
+                        At its core, Duorice means greed. It is an incredibly lucrative staking DApp that is built on
+                        the shoulders of giants. Drawing inspiration from the highly successful T2X platform from the
+                        glory days of DeFi; Duorice brings the auction fun and FOMO to the Binance Smart Chain.
+                    </p>
+
+                    <div class="promo__btns-wrap">
+                        <a href="./panel/lobby.html" class="btn btn--medium btn--orange"><span>Get LAVA Tokens</span></a>
+                        <a href="./litepaper.pdf" class="btn btn--big btn--blue">Litepaper</a>
+                    </div>
+                </div>
+            </div>
+            <img src="/panel/dist/imgs/duorice_logo_4.png" data-aos="fade-up" alt="" class="promo__img" style="left: 60%;top: 10%;filter: drop-shadow(2px 9px 10px #00000050);">
+        </div>
+        <div class="scroll-down">
+            <img src="img/scroll-down.png" alt="">
+        </div>
+    </section>
+<!--    <section class="economy">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-lg-8 offset-lg-4">-->
+<!--                    <a data-jarallax-element="-40"-->
+<!--                       href="https://www.youtube.com/watch?v=3cZjVFKzugY&list=PLcpkKchW7Xe5K578xRCwQbPbeVQGN5K9h&index=10"-->
+<!--                       class="economy__video-btn video-btn popup-youtube">-->
+<!--                        <img src="img/video-btn.png" alt="">-->
+<!--                    </a>-->
+<!--                    <div class="economy__block">-->
+<!--                        <div class="economy__block-content"><h2>-->
+<!--                            introduction video-->
+<!--                        </h2>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <img src="img/video-bg.png" alt="" class="economy__bg" style="padding-top: 10%;">-->
+<!--    </section>-->
+    <section class="economy" style="padding-top: 150px">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 promo__content" data-aos="fade-right">
+                    <h2>Benefits from investing in Duorice</h2><br>
+                    <p>
+                        Dourice is Fork of Avarice. Contract rules are best like their first rules (to max apy). The apy is up to 25% per day. Why Dourice is better then others? There are real money with real benefits. All first investors will get at 09.08.2022r Satoshi Island Tokens. We had 3 subscribtion on Tenset from CEO team. So extra tokens will be distributed by this way. All BNB and ETH inwested until 08.08.2022r this is the last day to entry with bonsu satoshi island tokens. So 1.5 x tokens we will get from max subscribtion / all bnb invested from start * bnb what You invested from start project. The same amount 1.5 will be distributed to ETH inwestors. As BNB is first starting they have better rules as we respect first investors little more (bnb is cheaper, then ETH.
+                    </p>
+                    <p>
+                        The tokens are belong community, and even owner have no access to contract. Only ho sent BNB can do interaciton with contract. So its Your game. The team and owenr is taking near 5% to buybacks, adverts, and creating new company, from any buying in lobby.
+                        Some money gotted from lobbys will be used for buybacks (from this 5%).
+                    </p>
+                    <p>
+                        Inwestors who pleyed this game will got company shares from new company who owner will create. (% of shares will be counted by main token investment (BNB, ETH... (not by LAVA tokens, so even late investors will got same shares) beofre 90 days from start. 90 day is last day for counting to company shares.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section about" id="about" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="row">
+                <div data-aos="fade-right" class="col-lg-5">
+                    <div class="section-header section-header--animated section-header--tire section-header--small-margin">
+
+                        <h2>About Duorice</span>
+                        </h2>
+                    </div>
+                    <div class="about__animated-content">
+                        <p>
+                            Duorice is designed to provide maximum benefit to the stakers. Users will buy LAVA tokens
+                            with BNB on our easy to use dApp. They can then stake their tokens to earn interest paid in
+                            LAVA along with their share of the BNB dividends from the daily auction lobby. Users can make
+                            as many stakes they want for as long as they want up to a maximum of 300 days. The longer
+                            the stake, the more interest you earn, all while enjoying staking bonuses along the way.
+                            Simple.
+                        </p>
+                        <ul>
+                            <li>Selling your unfinished stakes with your chosen price</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1 align-items-center">
+                    <img src="img/about-img.png" class="about__img img-responsive" alt="">
+                </div>
+            </div>
+        </div>
+<!--        <img src="img/about-bg.png" data-jarallax-element="40" alt="" class="about__bg">-->
+    </section>
+    <section class="section section--no-pad-bot services" id="statistic">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section-header section-header--animated section-header--center section-header--medium-margin">
+                        <h4>Duorice</h4>
+                        <h2>STATISTICS</h2>
+                    </div>
+                    <div class="services__items">
+                        <div class="services__left">
+                            <div data-aos="fade-up" class="service">
+                                <div class="service__bg"
+                                     style="background-color: #e85f70; box-shadow: 0 0 51px rgba(232, 95, 112, 0.74); box-shadow: 0 0 51px rgba(232, 95, 112, 0.74);"></div>
+                                <img src="img/service-icon-1.svg" alt="">
+                                <div class="service__title">
+                                    Users: --
+                                </div>
+                            </div>
+                            <div data-aos="fade-up" data-aos-delay="200" class="service">
+                                <div class="service__bg"
+                                     style="background-color: #fa8936; background-image: linear-gradient(-234deg, #ea9d64 0%, #fa8936 100%); box-shadow: 0 0 51px rgba(250, 137, 54, 0.74);"></div>
+                                <img src="img/service-icon-2.svg" alt="">
+                                <div class="service__title">
+                                    Entered BNB: --
+                                </div>
+                            </div>
+                        </div>
+                        <div class="services__right">
+                            <div data-aos="fade-up" data-aos-delay="400" class="service">
+                                <div class="service__bg"
+                                     style="background-image: linear-gradient(-234deg, #6ae472 0%, #4bc253 100%); box-shadow: 0 0 51px rgba(75, 194, 83, 0.74);"></div>
+                                <img src="img/service-icon-3.svg" alt="">
+                                <div class="service__title" style="    text-align: center;">
+                                    Overall Staked Tokens: -- LAVA
+                                </div>
+                            </div>
+                            <div data-aos="fade-up" data-aos-delay="600" class="service">
+                                <div class="service__bg"
+                                     style="background-color: #0090d5; background-image: linear-gradient(-234deg, #29aceb 0%, #0090d5 100%); box-shadow: 0 0 51px rgba(0, 144, 213, 0.74);"></div>
+                                <img src="img/service-icon-4.svg" alt="">
+                                <div class="service__title" style="    text-align: center;">
+                                    Overall Collected Divs: -- BNB
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="img/services-bg1.png" alt="" class="services__bg">
+        <img src="img/services-bg-1.png" class="services__cosmos" alt="">
+    </section>
+
+    <section class="section cases" id="features" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section-header section-header--animated section-header--center section-header--medium-margin">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col cases__list">
+                    <div data-aos="fade-right" class="cases__item">
+                        <img src="img/cases-icon-5.png" alt="" class="cases__item-icon">
+                        <div class="cases__item-content">
+                            <div class="cases__item-title">
+                                Referral System
+                            </div>
+                            <p class="cases__item-text">
+                                Duorice has a grate referral system that rewards both referer and the referred user.
+                                everyone wins when using a ref link! There's zero reason NOT to use one!
+                            </p>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left" data-aos-delay="200" class="cases__item">
+                        <img src="img/cases-icon-4.png" alt="" class="cases__item-icon">
+                        <div class="cases__item-content">
+                            <div class="cases__item-title">
+                                Secure
+                            </div>
+                            <p class="cases__item-text">
+                                Duorice smart contract is verified and audited. Rest assured you can trust your funds
+                                are safe.
+                            </p>
+                        </div>
+                    </div>
+                    <div data-aos="fade-right" class="cases__item">
+                        <img src="img/cases-icon-3.png" alt="" class="cases__item-icon">
+                        <div class="cases__item-content">
+                            <div class="cases__item-title">
+                                Social Media
+                            </div>
+                            <p class="cases__item-text">
+                                Get all the latest updates and connect with other active members of the community using
+                                Telegram and Discord
+                            </p>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left" data-aos-delay="200" class="cases__item">
+                        <img src="img/cases-icon-1.png" alt="" class="cases__item-icon">
+                        <div class="cases__item-content">
+                            <div class="cases__item-title">
+                                Mobile Optimized
+                            </div>
+                            <p class="cases__item-text">
+                                On the go? The Duorice platform is optimized for mobile use. supporting all of the
+                                platform features on your smart device.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+        <img src="img/cases-bg.png" class="cases__bg" alt="">
+        <img src="img/cases-imgs.png" class="cases__elements" alt="">
+    </section>
+    <section class="docs" id="docs">
+    </section>
+    <section class="tobedel data token-data section section--no-pad-bot">
+        <div class="container">
+            <div class="row chart__row align-items-center">
+                <div class="col-lg-6">
+                    <div class="chart">
+                        <img class="chart__bg" src="img/chart-bg.png" alt="">
+                        <div class="chart__wrap">
+                            <canvas id="myChart" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-left" class="col-lg-6 token-data__animated-content">
+                    <div class="chart__title">
+                        Allocation of funds
+                    </div>
+                    <p class="chart__text">
+                        Total token supply - 152,358
+                    </p>
+                    <ul class="chart__legend">
+                        <li>
+                            <span style="width: 101px;"></span>
+                            9% Founders and Team
+                        </li>
+                        <li>
+                            <span style="width: 153px;"></span>
+                            13% Reserved Funding
+                        </li>
+                        <li>
+                            <span style="width: 34px;"></span>
+                            2% Advisors
+                        </li>
+                        <li>
+                            <span style="width: 289px;"></span>
+                            25% Distribute to Community
+                        </li>
+                        <li>
+                            <span style="width: 22px;"></span>
+                            1% Bounty campaign
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section faq" id="faq">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section-header section-header--center section-header--medium-margin">
+                        <h4>FAQ</h4>
+                        <h2>Frequency Asked Questions</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <ul class="accordion">
+                        <li>
+                            <a>How is the stake pool calculated? </a>
+                            <p>
+                                94% of the BNB that enters the Daily Auction lobby is pooled and sent back to stakers
+                            </p>
+                        </li>
+                        <li>
+                            <a>Do I have to stake $LAVA to receive BNB dividends? </a>
+                            <p>
+                                Yes! The whole platform is based on staking and in order to receive BNB you need to
+                                stake your LAVA.
+                            </p>
+                        </li>
+                        <li>
+                            <a>When will I receive my dividends?</a>
+                            <p>
+                                You can collect your stakes when they are finished and receive your dividends.
+                            </p>
+                        </li>
+                        <li>
+                            <a>What is the point of the auction? </a>
+                            <p>
+                                Since there is no liquidity on a DEX, the main way users can acquire LAVA is buy
+                                participating in the daily auctions.
+                            </p>
+                        </li>
+                        <li>
+                            <a>Where does the $BNB go? </a>
+                            <p>
+                                94% of all $BNB collected is returned to the stakers. The other 6% is reserved for
+                                development costs and buy backs!
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section contact">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section-header section-header--center section-header--medium-margin">
+                        <h4>Contact us</h4>
+                        <h2>Get in Touch</h2>
+                    </div>
+                    <form action="#" class="form contact-form" id="contact-form">
+                        <input type="text" name="Name" class="form__input mail-1i" placeholder="Title">
+                        <input type="email" name="Email" class="form__input mail-2i" placeholder="Email">
+                        <textarea name="Message" class="form__textarea mail-3i" placeholder="Message"></textarea>
+                        <button onclick="sendMail()" class="form__btn btn btn--uppercase btn--orange">
+                            <span>Send message</span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <img src="img/subscribe-bg.png" class="contact-bg" alt="">
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <a href="" class="logo">
+                        <img class="logo__img" src="./panel/dist/imgs/duorice_logo_3.png" alt=""
+                             style="    background-image: none;">
+                        <div class="logo__title">Duorice</div>
+                    </a>
+                    <div class="copyright">© 2022, Duorice</div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="social-block">
+                        <div class="social-block__title">
+                            Stay connected:
+                        </div>
+                        <ul class="social-list">
+                            <li class="social-list__item">
+                                <a href="" class="social-list__link">
+                                    <i class="fontello-icon icon-twitter">&#xf309;</i>
+                                </a>
+                            </li>
+
+                            <li class="social-list__item">
+                                <a href="https://t.me/DuoriceOfficial" class="social-list__link">
+                                    <i class="fontello-icon icon-telegram">&#xf2c6;</i>
+                                </a>
+                            </li>
+                            <li class="social-list__item">
+                                <a href="https://discord.gg/duorice" class="social-list__link" style="text-align: center;
+									padding-top: 6px;">
+                                    <i style="color:white" class="fab fa-discord">
+                                    </i>
+                                </a>
+                            </li>
+                            <li class="social-list__item">
+                                <a href="" class="social-list__link">
+                                    <i class="fontello-icon icon-youtube-play">&#xf16a;</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('.tobedel')[0].remove();
+    })
+
+    function sendMail() {
+        var link = "mailto:team@duorice.net"
+            + `?cc=${$('.mail-2i')[0].value}`
+            + "&subject=" + $('.mail-1i')[0].value
+            + "&body=" + $('.mail-3i')[0].value;
+
+        window.location.href = link;
+    }
+
+
+    function createCookie(cookieName, cookieValue, daysToExpire) {
+        let date = new Date();
+        date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
+        cookiepath = "/";
+        document.cookie = cookieName + "=" + cookieValue + "; expires=" + date.toGMTString() + "; path=" + cookiepath;
+
+    }
+
+    function checkURLForRef() {
+        if (window.location.href.indexOf("r=") < 0) {
+            return ""
+        } else {
+            const index = window.location.href.indexOf("r=") + 2
+            return window.location.href.slice(index, index + 42)
+        }
+    }
+
+    if (checkURLForRef().length > 0) {
+        createCookie("ref", checkURLForRef(), 10000000)
+    }
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.2.4.min.js"><\/script>')</script>
+<script src="js/scripts.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173014643-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag("js", new Date());
+        gtag("config", "UA-173014643-1");
+    </script>
+    <meta charset="utf-8"/>
+    <link href="dist/imgs/duorice_logo_3.png" rel="shortcut icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Defi at Its Purest"/>
+    <meta name="keywords" content="duorice, crypto, bitcoin, ethereum, staking, LAVA token, BSC"/>
+    <meta name="author" content="LEFT4CODE"/>
+    <title> - Stake</title>
+
+    <link rel="stylesheet" href="dist/custom.css"/>
+    <link rel="stylesheet" href="dist/css/app.css"/>
+    <link rel="stylesheet" href="dist/cAlert.css"/>
+    <script src="https://unpkg.com/moralis@1.5.5/dist/moralis.js"></script>
+
+</head>
+
+<script src="./dist/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<body class="app">
+<div class="shared-header" style="position: fixed;z-index: 100;width: 100%;"></div>
+<div class="alert-holder">
+    <div class="alert-tb rounded-md flex items-center px-5 py-4 mb-2 bg-theme-18 text-theme-9"
+         style="display: none; position: fixed; width: fit-content; right: 10px; top: 9px; z-index: 10000; opacity: 0.96; padding-left: 6%; padding-right: 6%;">
+        <i data-feather="alert-circle" class="w-6 h-6 mr-2" style="display: inline-block;"></i><span class="alert-inner" style="display: inline-block;"></span>
+    </div>
+    <div class="alert-tb rounded-md flex items-center px-5 py-4 mb-2 bg-theme-17 text-theme-11"
+         style="display: none; position: fixed; width: fit-content; right: 10px; top: 9px; z-index: 10000; opacity: 0.96; padding-left: 6%; padding-right: 6%;">
+        <i data-feather="alert-circle" class="w-6 h-6 mr-2" style="display: inline-block;"></i><span class="alert-inner" style="display: inline-block;"></span>
+    </div>
+    <div class="alert-tb rounded-md flex items-center px-5 py-4 mb-2 bg-theme-31 text-theme-6"
+         style="display: none; position: fixed; width: fit-content; right: 10px; top: 9px; z-index: 10000; opacity: 0.96; padding-left: 6%; padding-right: 6%;">
+        <i data-feather="alert-circle" class="w-6 h-6 mr-2" style="display: inline-block;"></i><span class="alert-inner" style="display: inline-block;"></span>
+    </div>
+</div>
+
+<div class="modal3" id="button-modal-enter-lobby" style=" text-align: -webkit-center; background: #2f2f4c85; z-index: 10000; margin-top: auto !important;
+        margin-left: auto !important; margin-top: -10000px;
+    margin-left: -10000px;
+    background: rgb(18 15 39 / 60%);
+    transition: visibility 0 linear 0.2s,opacity .2s 0;
+    visibility: hidden;
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    color: #FFF;">
+    <div class="modal__content relative"
+         style="background: #ccd3df;border-radius: 10px;box-shadow: 0px 0px 30px #1010188c;margin-top: 200px;border: 4px solid #606060;width: fit-content;">
+        <a data-dismiss="modal3" href="javascript:;" onclick="closeModal3()" class="absolute right-0 top-0 mt-3 mr-3"
+           style="z-index: 10000000;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                 class="feather feather-x close-modal-a w-8 h-8 text-gray-500">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </a>
+        <div class="intro-y col-span-12 sm:col-span-6"
+             style="padding-top: 50px;padding: 50px 100px 20px;display: inline-block;padding: 20px;width: 100%;">
+            <div style="font-weight: 900;color: #6d7076;padding-bottom: 3px;float: left;width: auto;font-size: 16px;padding-right: 6px;padding-top: 9px;">
+                Transfer
+            </div>
+            <input class="auction-amount-entry input w-full border flex-1 inp-tra-1" placeholder="1000 LAVA"
+                   style="color: #abbac6;font-weight: 700;background: white;border: 3px solid #b4b9c4;box-shadow: 2px 4px 5px #b4b9c4;float: left;width: 15%;"
+                   type="number">
+            <div style="font-weight: 900;color: #6d7076;padding-bottom: 3px;float: left;width: auto;padding-right: 6px;padding-left: 6px;padding-top: 9px;font-size: 16px;">
+                LAVA tokens to
+            </div>
+            <input class="auction-amount-entry input w-full border flex-1 inp-tra-2" placeholder="0x0000..."
+                   style="color: #abbac6;font-weight: 700;background: white;border: 3px solid #b4b9c4;box-shadow: 2px 4px 5px #b4b9c4;float: left;width: 30%;">
+            <button class="au-ent" type="button" data-dismiss="modal3" style="margin: 4px 20px 0px 20px;border-radius: 7px;display: inline-block;width: 120px;height: 36px;text-align: center;cursor: pointer;background: linear-gradient(to bottom right, #4caf50 0%, #009688 100%) !important;box-shadow: 2px 4px 4px #1a9f755c;color: #ffffffa8;font-family: 'Montserrat-b1';font-size: 16px; display: inline-block;
+            float: left;" onclick="TransferAVCTokens()"> SEND
+            </button>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="card-title-rv" style="
+            border-bottom: 4px solid #3e4252;
+            padding-bottom: 8px;
+            background-color: #494f66;
+            border-bottom-right-radius: 6px;
+            border-bottom-left-radius: 6px;
+            height: 40px;
+            margin-right: 0px;
+            margin-left: 0px;
+            position: fixed;
+            width: calc(12.9% - 7px);
+            margin-bottom: 50px;
+            z-index: 1000;
+            top: 55px;
+            left: 0;
+        ">
+        <h4 style="font-size: 16px;
+            color: #ffffff45;
+            font-family: 'Montserrat-m1';
+            padding-left: 14px;
+            padding-top: 8px;
+            font-weight: 900;">Recent Events</h4>
+    </div>
+    <div class="recent-events" id="sc-2" style="  z-index: 10;  background-color: #3a3e4c;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    width: 12.9%;
+    position: fixed;
+    left: 0;
+    box-shadow: 4px 0px 7px #0000000a;
+    padding-top: 73px;
+    overflow-y: auto;
+    padding-bottom: 30px;"></div>
+    <div class="l-12-b2" style="display: inline-block;
+            width: calc(100% - 12%);
+            position: absolute;
+            right: 20px;
+            float: right;
+            padding-left: 44px;
+            padding-top: 38px;">
+        <div class="box-body intro-y box lg:mt-5"
+             style="background: #2e2e49; border-radius: 9px; background: transparent !important; box-shadow: none;">
+            <div class="p-5" style="height: 80px; position: relative; padding: 0px;">
+                <div class="card-body" style="">
+                    <div class="row"
+                         style="display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: nowrap; -ms-flex: 0 0 25%; padding-left: 0px; padding-right: 1.6rem; height: 80px;">
+                        <div class="box-body intro-y box col-sm-6 col-xl-3 mb-2 mb-xl-0 nnb-31"
+                             style="-webkit-box-flex: 0; -ms-flex: 0 0 25%; flex: 0 0 25%; max-width: 25%; margin: 0 0.5rem 0 0; padding: 0 2%;">
+                            <div class="media"
+                                 style="display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; height: 80px;">
+                                <div class="media-body my-auto" style="flex: 1;">
+                                    <h4 class="font-weight-bolder mb-0" style="font-size: 14px;">Overall Staked
+                                        Tokens</h4>
+                                    <p class="card-text font-small-3 mb-0 gd-31"
+                                       style="font-size: 18px; font-weight: bold; font-family: 'Montserrat-b1';">--</p>
+                                </div>
+                                    <div class="media-body my-auto media-aside mr-2 align-self-start"
+                                         style="width: 48px; height: 48px; background-color: rgba(115, 103, 240, 0.12); color: #7367f0; border-radius: 50% !important; display: inline-block; margin-right: 0;">
+                                        <span class="b-avatar badge-light-primary rounded-circle" style="text-align: center;">
+                                        <span class="b-avatar-custom" style="
+                                                                                                                border-radius: 50%;
+                                                                                                                width: 100%;
+                                                                                                                height: 100%;
+                                                                                                                display: flex;
+                                                                                                                -webkit-box-pack: center;
+                                                                                                                -ms-flex-pack: center;
+                                                                                                                justify-content: center;
+                                                                                                                -ms-flex-align: center;
+                                                                                                                align-items: center;
+                                                                                                                background: linear-gradient(to bottom right, #3ae3ec 0%, #28767a 100%) !important;
+                                                                                                                box-shadow: 0 5px 10px #c4cdeb;
+                                                                                                            ">
+                                        <svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline
+                                                points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                                        </span>
+                                        </span>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="box-body intro-y box col-sm-6 col-xl-3 mb-2 mb-xl-0 nnb-32"
+                             style="-webkit-box-flex: 0; -ms-flex: 0 0 25%; flex: 0 0 25%; max-width: 25%; margin: 0 0.5rem 0 0; padding: 0 2%;">
+                            <div class="media"
+                                 style="display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; height: 80px;">
+                                <div class="media-body my-auto" style="flex: 1;">
+                                    <h4 class="font-weight-bolder mb-0" style="font-size: 14px;">Overall Collected
+                                        Dividends</h4>
+                                    <p class="card-text font-small-3 mb-0 gd-32"
+                                       style="font-size: 18px; font-weight: bold; font-family: 'Montserrat-b1';">--</p>
+                                </div>
+                                    <div class="media-body my-auto media-aside mr-2 align-self-start" style="
+                                                                width: 48px;
+                                                                height: 48px;
+                                                                background-color: rgba(115, 103, 240, 0.12);
+                                                                color: #7367f0;
+                                                                border-radius: 50% !important;
+                                                                display: inline-block;
+                                                                margin-right: 0;
+                                                                box-shadow: 0 5px 10px #efc2c9;
+                                                            ">
+<span class="b-avatar badge-light-primary rounded-circle" style="text-align: center; box-shadow: 0 5px 10px #efc2c9;">
+<span class="b-avatar-custom" style="
+                                                                        width: 100%;
+                                                                        height: 100%;
+                                                                        overflow: hidden;
+                                                                        display: -webkit-box;
+                                                                        display: -ms-flexbox;
+                                                                        display: flex;
+                                                                        -webkit-box-pack: center;
+                                                                        -ms-flex-pack: center;
+                                                                        justify-content: center;
+                                                                        -webkit-box-align: center;
+                                                                        -ms-flex-align: center;
+                                                                        align-items: center;
+                                                                        -webkit-mask-image: radial-gradient(#fff, #000);
+                                                                        -webkit-mask-image: radial-gradient(#fff, #000);
+                                                                        background-image: linear-gradient(to bottom right, #f1bf64 0%, #f71d36 100%) !important;
+                                                                        border-radius: 50%;
+                                                                    ">
+<svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+     class="feather feather-cloud-drizzle"><line x1="8" y1="19" x2="8" y2="21"></line>
+        <line x1="8" y1="13" x2="8" y2="15"></line><line x1="16" y1="19" x2="16" y2="21"></line>
+        <line x1="16" y1="13" x2="16" y2="15"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="12" y1="15"
+                                                                                                  x2="12"
+                                                                                                  y2="17"></line><path
+        d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path></svg>
+</span>
+</span>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="box-body intro-y box col-sm-6 col-xl-3 mb-2 mb-xl-0 nnb-33"
+                             style="-webkit-box-flex: 0; -ms-flex: 0 0 25%; flex: 0 0 25%; max-width: 25%; margin: 0 0.5rem 0 0; padding: 0 2%;">
+                            <div class="media"
+                                 style="display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; height: 80px;">
+                                <div class="media-body my-auto" style="flex: 1;">
+                                    <h4 class="font-weight-bolder mb-0" style="font-size: 14px;">Overall Collected Bonus
+                                        Tokens</h4>
+                                    <p class="card-text font-small-3 mb-0 gd-33"
+                                       style="font-size: 18px; font-weight: bold; font-family: 'Montserrat-b1';">--</p>
+                                </div>
+                                <div class="media-body my-auto media-aside mr-2 align-self-start" style="
+                                                                width: 48px;
+                                                                height: 48px;
+                                                                background-color: rgba(115, 103, 240, 0.12);
+                                                                color: #7367f0;
+                                                                border-radius: 50% !important;
+                                                                display: inline-block;
+                                                                margin-right: 0;
+                                                                box-shadow: 0 5px 10px #e4cbfb;
+                                                            ">
+<span class="b-avatar badge-light-primary rounded-circle" style="text-align: center;">
+<span class="b-avatar-custom" style="
+                                                                        width: 100%;
+                                                                        height: 100%;
+                                                                        overflow: hidden;
+                                                                        display: -webkit-box;
+                                                                        display: -ms-flexbox;
+                                                                        display: flex;
+                                                                        -webkit-box-pack: center;
+                                                                        -ms-flex-pack: center;
+                                                                        justify-content: center;
+                                                                        -webkit-box-align: center;
+                                                                        -ms-flex-align: center;
+                                                                        align-items: center;
+                                                                        -webkit-mask-image: radial-gradient(#fff, #000);
+                                                                        -webkit-mask-image: radial-gradient(#fff, #000);
+                                                                        background: linear-gradient(to bottom right, #ff5dbb 0%, #a870ff 100%) !important;
+                                                                        border-radius: 50%;
+                                                                    ">
+<svg style="color:white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon
+        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+    </svg>
+</span>
+</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div onclick="location.href='https://duorice.net/'"
+                             class="box-body intro-y box col-sm-6 col-xl-3 mb-2 mb-xl-0 waht-is-avc"
+                             style="cursor: pointer; -webkit-box-flex: 0;-ms-flex: 0 0 25%;flex: 0 0 25%;max-width: 25%;margin: 0 0.5rem 0 0;padding: 0 2%;background: linear-gradient(to bottom right, #161f20 0%, #0b303e 100%) !important;border-radius: 7px;box-shadow: 2px 5px 7px #83c2d2ba;">
+                            <h4 class="card-title dfont"
+                                style="font-size: 1.285rem; color: white; padding-top: 15px; padding-left: 15px;">What is Duorice?</h4>
+                            <p class="card-text font-small-2 mr-25 mb-0 dfont"
+                               style="color: #ffffff85; width: 100%; margin-top: -5px; padding-left: 40px; font-size: 17px;">
+                                Learn more...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bcs-mb-37" style="padding-top: 14px;">
+            <div class="box-body mbb-83" style="box-shadow: 0 3px 20px #0000000f;display: inline-block;
+                    width: 74.7%; height: fit-content;">
+                <div class="p-5" style="height: 310px; position: relative;padding: 5px;">
+                    <table class="" style="width: 100%;">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="card-body" style="position: relative;">
+                                    <div id="chartArea" class="chart-donut" style="width: 60%;
+                                            float: right;"></div>
+                                    <div style="
+width: 40%;
+height: 275px;
+"><p style="
+font-size: 18px;
+color: #5e5e5eb8;
+margin-top: -7px;
+font-family: montserrat-m1;
+font-weight: 800;
+padding: 10px 10px 6px 10px;
+">Stake</p>
+                                        <p style="
+font-size: 13px;
+color: #5e5e5eb8;
+margin-top: -7px;
+font-family: montserrat-m1;
+font-weight: 300;
+padding: 0px 10px 10px 10px;
+">Stake your Tokens to earn Dividends and Bonus Tokens on them.</p>
+                                        <div style="/* text-align: center; */"><input class="stake-inp-amount" placeholder="Tokens to stake"
+style="display: block;margin: 15px 20px 10px 20px;background: #f3f2f7;border: 3px solid #6b6e7c61;border-radius: 4px;height: 36px;width: 190px;padding: 5px;box-shadow: 3px 4px 4px #9294a063;color: #abbac6;font-weight: 500;background-image: url(../panel/dist/imgs/duorice_logo_4.png);
+    background-size: 26px;
+    background-repeat: no-repeat;
+    background-position: right;"><input placeholder="Stake days" class="stake-inp-days"
+                                        style="display: block;margin: 0px 20px 0px 20px;background: #f3f2f7;border: 3px solid #6b6e7c61;border-radius: 4px;height: 36px;width: 190px;padding: 5px;box-shadow: 3px 4px 4px #9294a063;color: #abbac6;font-weight: 500;">
+                                            <div class="do-stake-btn" onclick="doStake()">
+                                                <span class="do-stake-btn-txt"
+                                                      style="color: #ffffff66;font-size: 22px;font-weight: 800;font-family: 'Montserrat-m1';/* top: 6px; */line-height: 35px;">Stake</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                <tr class="tr-445">
+                    <td>
+                        <div style="margin-top: -15px;">
+                            <div style="
+                                                height: 1.5px;
+                                                width: 100%;
+                                                background-color: #e3e3e36e;
+                                            "></div>
+                            <div style="
+                                                display: flex;
+                                                width: 100%;margin-top: -5px;
+                                            ">
+                                <div style="width: 33%;height: 50px;display: inline-block;border-right: 1.5px solid #f3f3f3;">
+                                    <div class="media-body my-auto media-aside mr-2 align-self-start" style="
+                                                width: 38px;
+                                                height: 38px;
+                                                margin: 10px;
+                                                display: inline-block;
+                                                margin-top: 10px;
+                                                opacity: 0.9;
+                                            ">
+<span class="b-avatar badge-light-primary rounded-circle" style="text-align: center;">
+<span class="b-avatar-custom" style="
+                                                        width: 100%;
+                                                        height: 100%;
+                                                        overflow: hidden;
+                                                        display: -webkit-box;
+                                                        display: -ms-flexbox;
+                                                        display: flex;
+                                                        -webkit-box-pack: center;
+                                                        -ms-flex-pack: center;
+                                                        justify-content: center;
+                                                        -webkit-box-align: center;
+                                                        -ms-flex-align: center;
+                                                        align-items: center;
+                                                        -webkit-mask-image: radial-gradient(#fff, #000);
+                                                        -webkit-mask-image: radial-gradient(#fff, #000);
+                                                        background: linear-gradient(to bottom right, #4fd354b8 0%, #0096889e 100%) !important;
+                                                        border-radius: 50%;
+                                                    ">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" style="
+width: 50%;
+fill: white;
+"><path d="M336 0h-288C22.38 0 0 22.38 0 48v416C0 489.6 22.38 512 48 512h288c25.62 0 48-22.38 48-48v-416C384 22.38 361.6 0 336 0zM64 208C64 199.2 71.2 192 80 192h32C120.8 192 128 199.2 128 208v32C128 248.8 120.8 256 112 256h-32C71.2 256 64 248.8 64 240V208zM64 304C64 295.2 71.2 288 80 288h32C120.8 288 128 295.2 128 304v32C128 344.8 120.8 352 112 352h-32C71.2 352 64 344.8 64 336V304zM224 432c0 8.801-7.199 16-16 16h-128C71.2 448 64 440.8 64 432v-32C64 391.2 71.2 384 80 384h128c8.801 0 16 7.199 16 16V432zM224 336c0 8.801-7.199 16-16 16h-32C167.2 352 160 344.8 160 336v-32C160 295.2 167.2 288 176 288h32C216.8 288 224 295.2 224 304V336zM224 240C224 248.8 216.8 256 208 256h-32C167.2 256 160 248.8 160 240v-32C160 199.2 167.2 192 176 192h32C216.8 192 224 199.2 224 208V240zM320 432c0 8.801-7.199 16-16 16h-32c-8.799 0-16-7.199-16-16v-32c0-8.801 7.201-16 16-16h32c8.801 0 16 7.199 16 16V432zM320 336c0 8.801-7.199 16-16 16h-32c-8.799 0-16-7.199-16-16v-32C256 295.2 263.2 288 272 288h32C312.8 288 320 295.2 320 304V336zM320 240C320 248.8 312.8 256 304 256h-32C263.2 256 256 248.8 256 240v-32C256 199.2 263.2 192 272 192h32C312.8 192 320 199.2 320 208V240zM320 144C320 152.8 312.8 160 304 160h-224C71.2 160 64 152.8 64 144v-64C64 71.2 71.2 64 80 64h224C312.8 64 320 71.2 320 80V144z"></path></svg>
+</span>
+</span>
+                                    </div>
+                                    <div style="
+    display: inline-block;
+    padding-top: 5px;
+    vertical-align: top;
+"><p style="
+    font-family: 'roboto';
+    font-weight: 500;
+    color: #00000061;
+    padding-top: 3px;
+">Bonus you will receive:</p>
+                                        <p class="uns-11" style="
+    font-size: 13px;
+    font-weight: bold;
+    font-family: 'Montserrat-b1';
+    color: #bcbcbc;
+">[fill the values to calculate]</p></div>
+                                </div>
+                                <div style="width: 33%;height: 50px;display: inline-block;border-right: 1.5px solid #f3f3f3;">
+                                    <div class="media-body my-auto media-aside mr-2 align-self-start" style="
+    width: 38px;
+    height: 38px;
+    margin: 10px;
+    display: inline-block;
+    margin-top: 10px;
+    opacity: 0.9;
+">
+<span class="b-avatar badge-light-primary rounded-circle" style="text-align: center;">
+<span class="b-avatar-custom" style="
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-mask-image: radial-gradient(#fff, #000);
+            -webkit-mask-image: radial-gradient(#fff, #000);
+            background: linear-gradient(to bottom right, #4fd354b8 0%, #0096889e 100%) !important;
+            border-radius: 50%;
+        ">
+<svg style="width: 50%;fill: white;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path
+        d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"/></svg>
+</span>
+</span>
+                                    </div>
+                                    <div style="
+display: inline-block;
+padding-top: 5px;
+vertical-align: top;
+"><p style="
+font-family: 'roboto';
+font-weight: 500;
+color: #00000061;
+padding-top: 3px;
+">Today Staked Tokens:</p>
+                                        <p class="uns-12" style="
+font-size: 13px;
+font-weight: bold;
+font-family: 'Montserrat-b1';
+color: #000000b3;
+">-- LAVA</p></div>
+                                </div>
+                                <div style="width: 33%;height: 50px;display: inline-block;border-right: 1.5px solid #f3f3f3;">
+                                    <div class="media-body my-auto media-aside mr-2 align-self-start" style="
+    width: 38px;
+    height: 38px;
+    margin: 10px;
+    display: inline-block;
+    margin-top: 10px;
+    opacity: 0.9;
+">
+<span class="b-avatar badge-light-primary rounded-circle" style="text-align: center;">
+<span class="b-avatar-custom" style="
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-mask-image: radial-gradient(#fff, #000);
+            -webkit-mask-image: radial-gradient(#fff, #000);
+            background: linear-gradient(to bottom right, #4fd354b8 0%, #0096889e 100%) !important;
+            border-radius: 50%;
+        ">
+<svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+     class="feather feather-cloud-drizzle"><line x1="8" y1="19" x2="8" y2="21"></line><line x1="8" y1="13" x2="8"
+                                                                                            y2="15"></line><line x1="16"
+                                                                                                                 y1="19"
+                                                                                                                 x2="16"
+                                                                                                                 y2="21"></line><line
+        x1="16" y1="13" x2="16" y2="15"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="12" y1="15"
+                                                                                                  x2="12"
+                                                                                                  y2="17"></line><path
+        d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path></svg>
+</span>
+</span>
+                                    </div>
+                                    <div style="
+display: inline-block;
+padding-top: 5px;
+vertical-align: top;
+"><p style="
+font-family: 'roboto';
+font-weight: 500;
+color: #00000061;
+padding-top: 3px;
+">Total available dividends:</p>
+                                        <p class="uns-13" style="
+font-size: 13px;
+font-weight: bold;
+font-family: 'Montserrat-b1';
+color: #000000b3;
+">-- BNB</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="box-body mc-mb-23" style=" display: inline-block;width: 24.5%; background: none!important;
+                        float: right;">
+            <div class="p-5" style="height: 310px; position: relative;    padding: 0;">
+                <div class="bcs-mb-32" style="
+                            display: inline-block;
+                            
+                            float: right;
+                            " class="box-body">
+                    <div class="intro-y col-span-12 sm:col-span-6" style="
+text-align: center;
+margin-bottom: 80px;
+border-radius: 10px;
+margin-top: 5px;
+background-color: #2d303e;
+box-shadow: 0 3px 15px #0000005e;
+z-index: 49;
+opacity: 0;
+position: relative;
+transform: translateY(50px);
+-webkit-animation: 0.4s intro-y-animation ease-in-out 0.33333s;
+animation: 0.4s intro-y-animation ease-in-out 0.33333s;
+-webkit-animation-fill-mode: forwards;
+animation-fill-mode: forwards;
+-webkit-animation-delay: 0.1s;
+animation-delay: 0.1s;
+margin: 0;
+height: 435px;
+">
+                        <div class="c-square-actived-ex floating" style="
+    margin-top: 20px;
+    /* margin: 10px; */
+    border-radius: 30px;
+    transform: translate(0px, 0px);
+    display: inline-block;
+    width: fit-content;
+    padding-right: 15px;
+    padding-left: 15px;
+    height: 50px;
+    background-image: linear-gradient(45deg, rgb(228 53 102) 0%, rgb(235 75 80) 100%);
+    box-shadow: 0 3px 4px rgb(0 0 0 / 20%), inset 0 0 10px 3px rgb(0 0 0 / 20%), 0 3px 20px rgb(228 53 102 / 30%), 0 3px 25px rgb(235 75 80 / 48%);
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+"><span class="c-square-span square-ex-span"
+        style="color: #ffffff66; font-size: 22px; font-weight: 900; font-family: 'Montserrat-m1'; top: 6px; line-height: 50px;">0x000...00000</span>
+                        </div>
+                        <div style="text-align: center; padding-top: 30px; padding-bottom: 10px; padding-right: 7px; padding-left: 7px;">
+                            <div style="display: inline-block; width: 49%;">
+                                <div style="font-weight: 900; color: #867885; padding-bottom: 3px; font-size: 16px; display: inline-block; padding-right: 2%;">
+                                    Balance:
+                                </div>
+                                <input type="number" disabled="" class="input w-full border flex-1 user-data-1"
+                                       value="--" style="
+            text-align: center;
+            color: #91979f;
+            font-weight: 900;
+            background: linear-gradient(rgb(48 51 61 / 56%), rgb(55 58 68 / 55%)), url(../dist/bnb_logo.png) no-repeat right 3px center;
+            background-size: 21px;
+            background-color: rgb(38 40 53 / 33%);
+            border: 2px solid #3a3e507d;
+            font-size: 16px;
+            width: 90%;
+            padding: 3px;
+            text-align: left;
+            padding-left: 5px;
+        "></div>
+                            <div style="display: inline-block; width: 49%;">
+                                <div style="font-weight: 900; color: #867885; padding-bottom: 3px; font-size: 16px; display: inline-block; padding-right: 2%;">
+                                    Tokens:
+                                </div>
+                                <input type="number" disabled="" class="input w-full border flex-1 user-data-2"
+                                       value="--" style="text-align: center;color: #91979f;font-weight: 900;background: linear-gradient(rgb(48 51 61 / 56%), rgb(55 58 68 / 55%)), url(../panel/dist/imgs/duorice_logo_3.png) no-repeat right 1px center;
+            background-size: 20px;background-color: rgb(38 40 53 / 33%);border: 2px solid #3a3e507d;font-size: 16px;width: 90%;padding: 3px;text-align: left;padding-left: 5px;"></div>
+                        </div>
+                        <div style="text-align: center;padding-top: 5px;padding-bottom: 10px;padding-right: 7px;padding-left: 7px;">
+                            <div style="">
+                                <div style="font-weight: 900; color: #867885; padding-bottom: 3px; font-size: 16px; display: inline-block; padding-right: 2%;">
+                                    your all-time staked:
+                                </div>
+                                <input disabled="" type="number" class="input w-full border flex-1 user-data-3"
+                                       value="--" style="
+            text-align: center;
+            color: #91979f;
+            font-weight: 900;
+            background: linear-gradient(rgb(48 51 61 / 56%), rgb(55 58 68 / 55%)), url(../panel/dist/imgs/duorice_logo_3.png) no-repeat right 4px center;
+            background-size: 21px;
+            background-color: rgb(38 40 53 / 33%);
+            border: 2px solid #3a3e507d;
+            font-size: 16px;
+            width: 90%;
+            padding: 3px;
+        "></div>
+                        </div>
+                        <div style="text-align: center;padding-top: 5px;padding-bottom: 10px;padding-right: 7px;padding-left: 7px;">
+                            <div style="">
+                                <div style="font-weight: 900; color: #867885; padding-bottom: 3px; font-size: 16px; display: inline-block; padding-right: 2%;">
+                                    your all-time divs:
+                                </div>
+                                <input type="number" disabled="" class="input w-full border flex-1 user-data-4"
+                                       value="--" style="
+            text-align: center;
+            color: #91979f;
+            font-weight: 900;
+            background: linear-gradient(rgb(48 51 61 / 56%), rgb(55 58 68 / 55%)), url(../dist/bnb_logo.png) no-repeat right 2px center;
+            background-size: 21px;
+            background-color: rgb(38 40 53 / 33%);
+            border: 2px solid #3a3e507d;
+            font-size: 16px;
+            width: 90%;
+            padding: 3px;
+        "></div>
+                        </div>
+                        <div style="text-align: center;padding-top: 5px;padding-bottom: 10px;padding-right: 7px;padding-left: 7px;">
+                            <div style="">
+                                <div style="font-weight: 900; color: #867885; padding-bottom: 3px; font-size: 16px; display: inline-block; padding-right: 2%;">
+                                    Referral Bonus:
+                                </div>
+                                <div>
+                                    <div class="copy-ref" onclick="copyreflink()" style="
+    position: absolute;
+    opacity: 0.7;
+    background-color: #c32849;
+    height: 34px;
+    width: 34px;
+    padding: 3px 1px;
+    border: 3.5px solid #df454e;
+    border-radius: 6px;
+    margin-left: 5%;
+    cursor: pointer;
+">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" style="
+    width: 24px;
+    fill: #ffffffba;
+">
+                                            <path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path>
+                                        </svg>
+                                    </div>
+                                    <input type="number" disabled="" class="input w-full border flex-1 user-data-5"
+                                           value="--" style="
+            text-align: center;
+            color: #91979f;
+            font-weight: 900;
+            background: linear-gradient(rgb(48 51 61 / 56%), rgb(55 58 68 / 55%)), url(../panel/dist/imgs/duorice_logo_3.png) no-repeat right 2px center;
+            background-size: 21px;
+            background-color: rgb(38 40 53 / 33%);
+            border: 2px solid #3a3e507d;
+            font-size: 16px;
+            width: 90%;
+            padding: 3px;
+        "></div>
+                            </div>
+                        </div>
+                        <div class="layer apps_craft_layer_z" data-depth="0.20" style="
+    position: absolute;
+    display: block;
+    left: 0px;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    top: 345px;
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0)));
+    /* filter: drop-shadow(2px 4px 6px black); */
+    z-index: -100;
+    width: -webkit-fill-available;
+"><img src="./dist/imgs/home-gradiant-bg-2.png" alt="Home Gradient Background 2"
+       style="height: 90px; width: 100%; border-radius: 10px;"></div>
+                    </div>
+                </div>
+                <div class="p-5 section-mb-53" style="
+                        height: auto;
+                        position: relative;
+                        padding: 5px;
+                        box-shadow: 0 3px 20px #0000000f;
+                        top: 11px;
+                        background: #ffffff;
+                        border-radius: 7px !important;
+                        width: 100%;
+                        float: right;     margin-bottom: 20px;
+                        ">
+                    <div class="flex items-center p-5 border-b border-gray-200" style="
+            padding: 1px;
+            justify-content: space-between;
+            border-bottom: 1px solid #eaedf1;
+            padding-bottom: 8px;
+            background-color: #e1e0e6de;
+            border-top-right-radius: 6px;
+            border-top-left-radius: 6px;
+            margin-left: 0px;
+            margin-right: 0px;
+            padding-left: 10px;
+            padding-top: 7px;
+        ">
+                        <h2 class="font-medium text-base mr-auto" style="
+            color: #a8a7af;
+        ">Page FAQ
+                        </h2>
+                    </div>
+                    <div class="accordion px-5 py-1" style="padding: 6px;     background-color: #e5e4e945;">
+                        <div class="accordion__pane border-b border-gray-200 py-4"
+                             style="border-color: #93939330;border-bottom-width: 2px;">
+                            <a href="javascript:;" class="accordion__pane__toggle font-medium block"
+                               style="color: #323b4cc2;font-family: 'Montserrat-m1';font-weight: 800;">What is
+                                staking?</a>
+                            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed"
+                                 style="display: none; font-family: 'Montserrat-m1';">stakes will accrue daily BNB
+                                dividends and LAVA bonus tokens based on the amount of LAVA tokens staked.
+                                At the end of every day a daily BNB pool will be calculated and it will be shared and
+                                allocate to all the open stakes which will be available for user to withdraw when the
+                                stake ends.
+                            </div>
+                        </div>
+                        <div class="accordion__pane border-b border-gray-200 py-4"
+                             style="border-color: #93939330;border-bottom-width: 2px;">
+                            <a href="javascript:;" class="accordion__pane__toggle font-medium block"
+                               style="color: #323b4cc2;font-family: 'Montserrat-m1';font-weight: 800;">What is the BNB
+                                pool?</a>
+                            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed"
+                                 style="display: none; font-family: 'Montserrat-m1';">94% of all BNB that enters the
+                                daily auction lobby is pooled to be distributed back out to the stakers which we call it
+                                the dividends pool.
+                            </div>
+                        </div>
+                        <div class="accordion__pane border-b border-gray-200 py-4"
+                             style="border-color: #93939330;border-bottom-width: 2px;">
+                            <a href="javascript:;" class="accordion__pane__toggle font-medium block"
+                               style="color: #323b4cc2;font-family: 'Montserrat-m1';font-weight: 800;">How is the
+                                dividends pool calculated?</a>
+                            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed"
+                                 style="display: none; font-family: 'Montserrat-m1';">dividend pool is split over a
+                                period of time based on the contracts day, For example, assuming day 3 ended with a 100
+                                Lobby BNB entry, that BNB will be divided by 3 as it's day 3, and split out over 3 days
+                                in
+                                chunks of 33.3 BNB. Another example; day 10 ends with 100 BNB, these
+                                BNB are split into chunks of 10 which are sent out over 10 days. This caps at day 60
+                            </div>
+                        </div>
+                        <div class="accordion__pane py-4 active"
+                             style="border-color: #93939330;border-bottom-width: 2px;">
+                            <a href="javascript:;" class="accordion__pane__toggle font-medium block"
+                               style="color: #323b4cc2;font-family: 'Montserrat-m1';font-weight: 800;">What are bonus
+                                tokens?</a>
+                            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed"
+                                 style="display: none; font-family: 'Montserrat-m1';">Users receive bonus LAVA tokens on
+                                their active stakes which is
+                                highly based on the duration of their stakes.
+                                Longer the duration higher the bonus percentage.
+                            </div>
+                        </div>
+                        <div class="accordion__pane py-4 active"
+                             style="border-color: #93939330;border-bottom-width: 2px;">
+                            <a href="javascript:;" class="accordion__pane__toggle font-medium block"
+                               style="color: #323b4cc2;font-family: 'Montserrat-m1';font-weight: 800;">Can I cancel my
+                                stake?</a>
+                            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed"
+                                 style="display: none; font-family: 'Montserrat-m1';">There is no feature in contract to
+                                cancel a stake after you started it however you can sell your stakes at the Buy&Sell
+                                section.
+                            </div>
+                        </div>
+                        <div class="accordion__pane py-4 active"
+                             style="border-color: #93939330;border-bottom-width: 0px;">
+                            <a href="javascript:;" class="accordion__pane__toggle font-medium block"
+                               style="color: #323b4cc2;font-family: 'Montserrat-m1';font-weight: 800;">When will I
+                                receive my dividends ?</a>
+                            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed"
+                                 style="display: none; font-family: 'Montserrat-m1';">After the stake days completed you
+                                will be able to end your stake and collect your BNB and LAVA tokens.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="
+                margin-top: 7px;
+                margin-bottom: 20px;
+            ">
+                <div class="box-body nm-stak-23" style="box-shadow: 0 3px 20px #0000000f;display: inline-block;
+                                width: 74.7%; height: auto;">
+                    <div class="p-5"
+                         style="height: 420px; position: relative; padding: 0px; height: fit-content; padding: 5px 3px;">
+                        <div class="card-header" style="
+                                            padding-left: 2.4 rem;
+                                            border-bottom: none;
+                                            padding: 1.5 rem;
+                                            background-color: transparent;
+                                            position: relative;
+                                            display: -webkit-box;
+                                            display: -ms-flexbox;
+                                            display: flex;
+                                            -webkit-box-align: center;
+                                            -ms-flex-align: center;
+                                            align-items: center;
+                                            -ms-flex-wrap: wrap;
+                                            flex-wrap: wrap;
+                                            -webkit-box-pack: justify;
+                                            -ms-flex-pack: justify;
+                                            justify-content: space-between;
+                                            border-bottom: 1px solid #eaedf1;
+                                            padding-bottom: 8px;
+                                            background-color: #e1e0e6de;
+                                            border-top-right-radius: 6px;
+                                            border-top-left-radius: 6px;
+                                            margin-left: 2px;
+                                            margin-right: 2px;
+                                        ">
+                            <h4 class="card-title"
+                                style="font-size: 18px; color: #67656e7a; font-family: 'Montserrat-m1'; padding-left: 14px; padding-top: 8px;">
+                                Your stakes</h4>
+                            <div class=" relative" onclick="hideFinished()" style="
+    padding-right: 50px;
+    top: 5px;
+">
+                                <div class="toggle button inline-block bg-theme-1 text-white" style="
+    background-color: #d6d5d8;
+    color: #919191b5;
+    height: 30px;
+    padding-top: 4px;
+    user-select: none;
+">Hide finished stakes
+                                </div>
+                            </div>
+                            <div onclick="refreshClick()" style="
+                                        height: 43px;
+                                        position: absolute;
+                                        width: 43px;
+                                        right: 0px;
+                                        top: 0px;
+                                        background-color: #c2c2c26b;
+                                        border-top-right-radius: 6px;
+                                        cursor: pointer;
+                                    ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-refresh-cw mx-auto" style="
+                                        margin-top: 10px;
+                                        color: #8b8b8b;
+                                    ">
+                                    <polyline points="23 4 23 10 17 10"></polyline>
+                                    <polyline points="1 20 1 14 7 14"></polyline>
+                                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="card-body" style="overflow: auto;">
+                            <table role="table" aria-busy="false" aria-colcount="5" class="table b-table"
+                                   id="__BVID__641" style="border-spacing: 2px; border-collapse: separate;">
+                                <thead role="rowgroup" class=""
+                                       style="border-collapse: separate; text-indent: initial;">
+                                <tr role="row" class="" style="border-collapse: separate; text-indent: initial;">
+                                    <th role="columnheader" scope="col" aria-colindex="1" class="" style="
+                                                                                                        --font-family-sans-serif: 'Montserrat', Helvetica, Arial, serif;
+                                                                                                        --font-family-monospace: 'Montserrat', Helvetica, Arial, serif;
+                                                                                                        font-family: Montserrat, Helvetica, Arial, serif;
+                                                                                                        line-height: 1.45;
+                                                                                                        color: #6e6b7b;
+                                                                                                        direction: ltr;
+                                                                                                        -webkit-box-direction: normal;
+                                                                                                        word-wrap: break-word;
+                                                                                                        box-sizing: border-box;
+                                                                                                        text-align: -webkit-match-parent;
+                                                                                                        font-size: 0.857rem;
+                                                                                                        padding: 0.72 rem 2 rem;
+                                                                                                        outline: none;
+                                                                                                        border: 0;
+                                                                                                        background-color: #f3f2f7;
+                                                                                                        padding: 15px 0px;text-align: center;font-family: 'roboto';
+                                                                                                    ">
+                                        <div>Start</div>
+                                    </th>
+                                    <th role="columnheader" scope="col" aria-colindex="2" class="" style="
+                                                                                                        --breakpoint-sm: 576px;
+                                                                                                        --breakpoint-md: 768px;
+                                                                                                        --breakpoint-lg: 992px;
+                                                                                                        --breakpoint-xl: 1200px;
+                                                                                                        --font-family-sans-serif: 'Montserrat', Helvetica, Arial, serif;
+                                                                                                        --font-family-monospace: 'Montserrat', Helvetica, Arial, serif;
+                                                                                                        font-family: Montserrat, Helvetica, Arial, serif;
+                                                                                                        line-height: 1.45;
+                                                                                                        color: #6e6b7b;
+                                                                                                        direction: ltr;
+                                                                                                        -webkit-box-direction: normal;
+                                                                                                        word-wrap: break-word;
+                                                                                                        box-sizing: border-box;
+                                                                                                        text-align: -webkit-match-parent;
+                                                                                                        font-size: 0.857rem;
+                                                                                                        padding: 0.72 rem 2 rem;
+                                                                                                        outline: none;
+                                                                                                        border: 0;
+                                                                                                        background-color: #f3f2f7;
+                                                                                                        padding: 15px 0px;text-align: center;font-family: 'roboto';
+                                                                                                    ">
+                                        <div>End</div>
+                                    </th>
+                                    <th role="columnheader" scope="col" aria-colindex="3" class="" style="
+                                                                                                        --breakpoint-sm: 576px;
+                                                                                                        --breakpoint-md: 768px;
+                                                                                                        --breakpoint-lg: 992px;
+                                                                                                        --breakpoint-xl: 1200px;
+                                                                                                        --font-family-sans-serif: 'Montserrat', Helvetica, Arial, serif;
+                                                                                                        --font-family-monospace: 'Montserrat', Helvetica, Arial, serif;
+                                                                                                        font-family: Montserrat, Helvetica, Arial, serif;
+                                                                                                        line-height: 1.45;
+                                                                                                        color: #6e6b7b;
+                                                                                                        direction: ltr;
+                                                                                                        -webkit-box-direction: normal;
+                                                                                                        word-wrap: break-word;
+                                                                                                        box-sizing: border-box;
+                                                                                                        text-align: -webkit-match-parent;
+                                                                                                        font-size: 0.857rem;
+                                                                                                        padding: 0.72 rem 2 rem;
+                                                                                                        outline: none;
+                                                                                                        border: 0;
+                                                                                                        background-color: #f3f2f7;
+                                                                                                        padding: 15px 0px;text-align: center;font-family: 'roboto';
+                                                                                                    ">
+                                        <div>Progress</div>
+                                    </th>
+                                    <th role="columnheader" scope="col" aria-colindex="4" class="" style="
+                                                                                                        --breakpoint-sm: 576px;
+                                                                                                        --breakpoint-md: 768px;
+                                                                                                        --breakpoint-lg: 992px;
+                                                                                                        --breakpoint-xl: 1200px;
+                                                                                                        --font-family-sans-serif: 'Montserrat', Helvetica, Arial, serif;
+                                                                                                        --font-family-monospace: 'Montserrat', Helvetica, Arial, serif;
+                                                                                                        font-family: Montserrat, Helvetica, Arial, serif;
+                                                                                                        line-height: 1.45;
+                                                                                                        color: #6e6b7b;
+                                                                                                        direction: ltr;
+                                                                                                        -webkit-box-direction: normal;
+                                                                                                        word-wrap: break-word;
+                                                                                                        box-sizing: border-box;
+                                                                                                        text-align: -webkit-match-parent;
+                                                                                                        font-size: 0.857rem;
+                                                                                                        padding: 0.72 rem 2 rem;
+                                                                                                        outline: none;
+                                                                                                        border: 0;
+                                                                                                        background-color: #f3f2f7;
+                                                                                                        padding: 15px 0px;text-align: center;font-family: 'roboto';
+                                                                                                    ">
+                                        <div>Staked</div>
+                                    </th>
+                                    <th role="columnheader" scope="col" aria-colindex="2" class="" style="
+                                                    --breakpoint-sm: 576px;
+                                                    --breakpoint-md: 768px;
+                                                    --breakpoint-lg: 992px;
+                                                    --breakpoint-xl: 1200px;
+                                                    --font-family-sans-serif: 'Montserrat', Helvetica, Arial, serif;
+                                                    --font-family-monospace: 'Montserrat', Helvetica, Arial, serif;
+                                                    font-family: Montserrat, Helvetica, Arial, serif;
+                                                    line-height: 1.45;
+                                                    color: #6e6b7b;
+                                                    direction: ltr;
+                                                    -webkit-box-direction: normal;
+                                                    word-wrap: break-word;
+                                                    box-sizing: border-box;
+                                                    text-align: -webkit-match-parent;
+                                                    font-size: 0.857rem;
+                                                    padding: 0.72 rem 2 rem;
+                                                    outline: none;
+                                                    border: 0;
+                                                    background-color: #f3f2f7;
+                                                    padding: 15px 0px;text-align: center;font-family: 'roboto';
+                                                ">
+                                        <div>BNB divs</div>
+                                    </th>
+                                    <th role="columnheader" scope="col" aria-colindex="2" class="" style="
+                    --breakpoint-sm: 576px;
+                    --breakpoint-md: 768px;
+                    --breakpoint-lg: 992px;
+                    --breakpoint-xl: 1200px;
+                    --font-family-sans-serif: 'Montserrat', Helvetica, Arial, serif;
+                    --font-family-monospace: 'Montserrat', Helvetica, Arial, serif;
+                    font-family: Montserrat, Helvetica, Arial, serif;
+                    line-height: 1.45;
+                    color: #6e6b7b;
+                    direction: ltr;
+                    -webkit-box-direction: normal;
+                    word-wrap: break-word;
+                    box-sizing: border-box;
+                    text-align: -webkit-match-parent;
+                    font-size: 0.857rem;
+                    padding: 0.72 rem 2 rem;
+                    outline: none;
+                    border: 0;
+                    background-color: #f3f2f7;
+                    padding: 15px 0px;text-align: center;font-family: 'roboto';
+                    ">
+                                        <div>Bonus Tokens (final)</div>
+                                    </th>
+                                    <th role="columnheader" scope="col" aria-colindex="5" class="" style="
+                                                                                                        --breakpoint-sm: 576px;
+                                                                                                        --breakpoint-md: 768px;
+                                                                                                        --breakpoint-lg: 992px;
+                                                                                                        --breakpoint-xl: 1200px;
+                                                                                                        --font-family-sans-serif: 'Montserrat', Helvetica, Arial, serif;
+                                                                                                        --font-family-monospace: 'Montserrat', Helvetica, Arial, serif;
+                                                                                                        font-family: Montserrat, Helvetica, Arial, serif;
+                                                                                                        line-height: 1.45;
+                                                                                                        color: #6e6b7b;
+                                                                                                        direction: ltr;
+                                                                                                        -webkit-box-direction: normal;
+                                                                                                        word-wrap: break-word;
+                                                                                                        box-sizing: border-box;
+                                                                                                        text-align: -webkit-match-parent;
+                                                                                                
+                                                                                                        font-size: 0.857rem;
+                                                                                                        padding: 0.72 rem 2 rem;
+                                                                                                        outline: none;
+                                                                                                        border: 0;
+                                                                                                        background-color: #f3f2f7;
+                                                                                                        padding: 15px 0px;text-align: center;font-family: 'roboto';
+                                                                                                    ">
+                                        <div>Action</div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody role="rowgroup" class="stake-ls">
+                                </tbody>
+                            </table>
+                            <div class="loading-tx-1" style="
+                text-align: center;
+                padding: 15px;
+                font-size: 20px;
+                font-family: 'Montserrat-b1';
+                color: #362f2f38;
+            ">Loading...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<style>
+    .floating {
+        animation-name: floating;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        margin-top: 5px;
+    }
+
+    @keyframes floating {
+        from {
+            transform: translate(0, 0px);
+        }
+        23% {
+            transform: translate(0, 10px);
+        }
+        to {
+            transform: translate(0, -0px);
+        }
+    }
+</style>
+<div class="alert-1 hide" style="position: fixed;">
+    <span class="alert-1-txt msg">Warning: This is a warning alert!</span>
+</div>
+<div class="alert-2 hide" style="position: fixed;">
+    <span class="alert-2-txt msg">Warning: This is a warning alert!</span>
+</div>
+<div class="alert-3 hide" style="position: fixed;">
+    <span class="alert-3-txt msg">Warning: This is a warning alert!</span>
+</div>
+<script>
+    function doAlert(text, num) {
+        $(`.alert-${num}-txt`)[0].innerHTML = text
+
+        $(`.alert-${num}`).addClass("show");
+        $(`.alert-${num}`).removeClass("hide");
+        $(`.alert-${num}`).addClass("showAlert");
+        setTimeout(function () {
+            $(`.alert-${num}`).removeClass("show");
+            $(`.alert-${num}`).addClass("hide");
+        }, 3000);
+    }
+</script>
+<a class="btn-f-style" href="#" data-title="Awesome Button"></a>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    // var web3 = new Web3();
+    // web3.setProvider(new web3.providers.HttpProvider("http://localhost:8545"));
+</script>
+
+<script src="newJs/apexcharts.js"></script>
+<script src="newJs/index1.js"></script>
+<script src="./js/web3.min.js"></script>
+<script src="./shared/header.js"></script>
+<script src="./js/core.js"></script>
+<script src="./js/stake.js"></script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+
+<script src="dist/js/app.js"></script>
+
+</body>
+</html>
